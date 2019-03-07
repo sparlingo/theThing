@@ -9,6 +9,8 @@
       </li>
     </ul>
     <h4 v-else>No persons, please add one using playground</h4>
+    <input v-model="person.name" placeholder="Person"/>
+    <button @click="handleCreatePerson">Create Person</button>
   </div>
 </template>
 
@@ -22,20 +24,35 @@ export default {
     persons: {
       query: PERSONS,
       subscribeToMore: {
-        document: PERSON_CREATED
+        document: PERSON_CREATED,
+        updateQuery: (previousResult, { subscriptionData }) => {
+          return {
+            persons: [
+              ...previousResult.persons,
+              subscriptionData.data.personCreated
+            ]
+          }
+        },
       }
     }
   },
-  // methods: {
-  //   handleCreatePerson(person) {
-  //     this.$apollo.mutate({
-  //       mutation: voteHomeTeam,
-  //       variables: {
-  //         gameId
-  //       }
-  //     })
-  //   }
-  // }
+  
+  methods: {
+    handleCreatePerson() {
+      this.$apollo.mutate({
+        mutation: createPerson,
+        variables: {
+          name: this.person.name
+        }
+      })
+    }
+  },
+
+  data: () => ({
+    person: {
+      name: ''
+    }
+  })
 }
 </script>
 
