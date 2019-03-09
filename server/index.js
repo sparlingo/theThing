@@ -1,7 +1,5 @@
 // load .env content into process.env
-require('dotenv-expand')(
-  require('dotenv').config()
-)
+require('dotenv').config()
 
 import "@babel/polyfill";
 import mongoose from 'mongoose'
