@@ -7,19 +7,15 @@ import { resolve } from 'path'
 import { mergeTypes, fileLoader } from 'merge-graphql-schemas';
 import { ApolloServer, gql } from 'apollo-server'
 
-import pubsub from './pubsub'
 import resolvers from './resolvers'
-import Person from './models/person.model'
+
+const schema = mergeTypes(
+  fileLoader(resolve(__dirname, './schema'))
+)
 
 const apolloOptions = {
-  typeDefs: gql(mergeTypes(fileLoader(resolve(__dirname, './schema')))),
+  typeDefs: gql(schema),
   resolvers,
-  context: () => ({
-    pubsub,
-    models: {
-      Person,
-    },
-  })
 }
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true })

@@ -1,7 +1,9 @@
-export function create(args, { models, pubsub }) {
-  return models.Person.create(args)
+import Person from '../models/person.model'
+
+export function create(data) {
+  return Person.create(data)
 }
 
-export function findAll(args, { models }) {
-  return models.Person.find()
+export function findAll() {
+  return Person.find()
 }

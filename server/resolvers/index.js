@@ -1,26 +1,15 @@
-import pubsub from '../pubsub'
-import * as PersonApi from '../api/person.api'
+import personResolvers from './person.resolvers'
 
 export default {
   Query: {
-    persons: (parent, args, context) => PersonApi.findAll(args, context)
+    ...personResolvers.queries
   },
 
   Mutation: {
-    createPerson: async (parent, args, context) => {
-      const person = await PersonApi.create(args, context)
-
-      pubsub.publish('personCreated', {
-        personCreated: person
-      })
-
-      return person
-    }
+    ...personResolvers.mutations
   },
 
   Subscription: {
-    personCreated: {
-      subscribe: () => pubsub.asyncIterator('personCreated'),
-    },
+    ...personResolvers.subscriptions
   },
 }

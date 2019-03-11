@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Persons from './views/Persons.vue'
+import People from './views/People.vue'
 
 Vue.use(Router)
 
@@ -11,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'persons',
-      component: Persons
+      name: 'people',
+      component: People
     },
   ]
 })
