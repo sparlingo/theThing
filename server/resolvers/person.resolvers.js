@@ -1,5 +1,5 @@
 import pubsub from '../pubsub'
-import * as PersonApi from '../api/person.api'
+import * as PersonApi from '../services/person.service'
 
 export default {
   queries: {
