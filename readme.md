@@ -1,6 +1,8 @@
 # MAGV 
 ## Mongo Apollo GraphQL Vue
 
+article: https://amenallah.com/build-vue-graphql-mongodb-boilerplate-frontend/
+
 this is simple boilerplate with these features:
 - MongoDB
 - Apollo Server
