@@ -1,15 +1,19 @@
 import personResolvers from './person.resolvers'
+import pollResolvers from './poll.resolvers'
 
 export default {
   Query: {
-    ...personResolvers.queries
+    ...personResolvers.queries,
+    ...pollResolvers.queries
   },
 
   Mutation: {
-    ...personResolvers.mutations
+    ...personResolvers.mutations,
+    ...pollResolvers.mutations
   },
 
   Subscription: {
-    ...personResolvers.subscriptions
+    ...personResolvers.subscriptions,
+    ...pollResolvers.subscriptions
   },
 }

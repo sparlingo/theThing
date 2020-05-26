@@ -1,0 +1,17 @@
+type Mutation {
+  createPerson(name: String!): Person
+}
+
+type Mutation {
+  createPoll(poll: CreatePollInput): Poll
+}
+
+input CreatePollInput {
+  title: String!
+  description: String!
+  options: [CreateOptionInput]
+}
+
+input CreateOptionInput {
+  name: String
+}
