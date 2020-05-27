@@ -1,8 +1,5 @@
 type Subscription {
   personCreated: Person
-}
-
-type Subscription {
   pollCreated: Poll
   optionVoted: Option
 }
