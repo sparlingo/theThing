@@ -18,7 +18,10 @@ const apolloOptions = {
   resolvers,
 }
 
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true })
+mongoose.connect(process.env.MONGO_URI, { 
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
   .then(() => {
     return new ApolloServer(apolloOptions).listen(
       parseInt(process.env.SERVER_PORT)
