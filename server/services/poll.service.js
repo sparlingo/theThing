@@ -4,7 +4,7 @@ export function create(data) {
   return Poll.create(data)
 }
 
-export function findaAll() {
+export function findAll() {
   return Poll.find().sort({ createdAt: -1 })
 }
 
@@ -13,9 +13,9 @@ export function voteOnPoll(optionId) {
     'options._id': optionId,
   }, {
     $inc: {
-      'options.$.votes': 1
-    }
+      'options.$.votes': 1,
+    },
   }, {
-    new: true
+    new: true,
   })
 }

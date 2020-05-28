@@ -1,11 +1,11 @@
-import mongoose, { Schema } from 'mongoose'
+import mongoose, { Schema } from 'mongoose';
 
 const OptionSchema = new Schema({
   name: String,
   votes: {
     type: Number,
-    default: 0
-  }
+    default: 0,
+  },
 })
 
 const PollSchema = new Schema({
@@ -13,7 +13,7 @@ const PollSchema = new Schema({
   description: String,
   options: [OptionSchema],
 }, {
-  timestamps: true
-})
+  timestamps: true,
+});
 
-module.exports = mongoose.model('poll', PollSchema)
+module.exports = mongoose.model('poll', PollSchema);

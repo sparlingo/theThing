@@ -1,5 +1,5 @@
 import { PubSub } from 'apollo-server'
-import { POLL_CREATED, OPTION_VOTED } from '../events'
+import { POLL_CREATED, OPTION_VOTED } from '../events';
 import * as pollService from '../services/poll.service'
 
 const pubsub = new PubSub()
@@ -13,7 +13,7 @@ export default {
 
   mutations: {
     async createPoll(parent, args) {
-      const poll = await pollService.create(args.poll).catch()
+      const poll = await pollService.create(args.poll).catch();
 
       pubsub.publish(POLL_CREATED, {
         [POLL_CREATED]: poll
@@ -23,7 +23,7 @@ export default {
     },
 
     async voteOnPoll(parent, args) {
-      const poll = await pollService.voteOnPoll(args.optionId).catch()
+      const poll = await pollService.voteOnPoll(args.optionId).catch();
 
       pubsub.publish(OPTION_VOTED, {
         [OPTION_VOTED]: poll.options.find((option) => {
@@ -37,10 +37,11 @@ export default {
 
   subscriptions: {
     [POLL_CREATED]: {
-      subscribe: () => pubsub.asyncIterator(POLL_CREATED)
+      subscribe: () => pubsub.asyncIterator(POLL_CREATED),
     },
+
     [OPTION_VOTED]: {
-      subscribe: () => pubsub.asyncIterator(OPTION_VOTED)
+      subscribe: () => pubsub.asyncIterator(OPTION_VOTED),
     }
-  }
+  },
 }

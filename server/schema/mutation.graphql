@@ -1,5 +1,4 @@
 type Mutation {
-  createPerson(name: String!): Person
   createPoll(poll: CreatePollInput): Poll
   voteOnPoll(optionId: ID!): Poll
 }
